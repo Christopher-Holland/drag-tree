@@ -40,7 +40,7 @@ button {
 }
 
 .app h1 {
-  font-size: 2rem;
+  font-size: 28px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -416,4 +416,36 @@ button:active {
   .bulb-housing {
     width: 74px;
   }
+}
+
+/* ==========================
+   Race Information
+========================== */
+
+.race-controls {
+  min-height: 130px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.race-status {
+  min-height: 28px;
+
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.launch-instruction {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.red-text {
+  color: #ff4848;
+  text-shadow: 0 0 10px rgba(255, 40, 40, 0.75);
 }
