@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Tree from "./components/Tree.tsx";
+import Tree from "./components/Tree/index.tsx";
 
 function App() {
   const [stageStep, setStageStep] = useState(0);

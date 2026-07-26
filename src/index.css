@@ -9,7 +9,12 @@
 }
 
 body {
-  background: #111;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(circle at center, #252525 0%, #111 55%, #070707 100%);
+
   color: white;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -30,44 +35,206 @@ button {
   justify-content: center;
   align-items: center;
 
-  gap: 2rem;
+  gap: 28px;
+  padding: 32px 16px;
 }
 
 .app h1 {
-  font-size: 2.2rem;
-  font-weight: bold;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 /* ==========================
-   Drag Tree
+   Full Tree Assembly
+========================== */
+
+.tree-assembly {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tree-header {
+  width: 310px;
+
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0 36px 8px;
+
+  color: #c9c9c9;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+/* ==========================
+   Tree Body
 ========================== */
 
 .tree {
-  width: 220px;
+  position: relative;
+
+  width: 310px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  gap: 14px;
+  gap: 18px;
+  padding: 20px 28px 26px;
 
-  padding: 30px;
+  background: linear-gradient(90deg, #161616, #252525, #161616);
 
-  background: #222;
-  border: 5px solid #555;
-  border-radius: 18px;
+  border: 4px solid #555;
+  border-radius: 8px;
+
+  box-shadow:
+    0 20px 35px rgba(0, 0, 0, 0.65),
+    inset 0 0 18px rgba(255, 255, 255, 0.04);
 }
 
-/* Each pair of bulbs */
+/* Vertical pole running behind the lights */
+
+.center-pole {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+
+  width: 18px;
+
+  background: linear-gradient(
+    90deg,
+    #3b3b3b,
+    #7a7a7a,
+    #3b3b3b
+  );
+
+  border-left: 2px solid #222;
+  border-right: 2px solid #222;
+
+  transform: translateX(-50%);
+}
+
+/* ==========================
+   Tree Sections
+========================== */
+
+.tree-section {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.staging-section {
+  gap: 7px;
+}
+
+.countdown-section {
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.tree-label {
+  position: relative;
+  z-index: 2;
+
+  min-width: 92px;
+  padding: 4px 8px;
+
+  background: #111;
+  border: 1px solid #777;
+  border-radius: 3px;
+
+  color: #ededed;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+/* ==========================
+   Rows
+========================== */
 
 .row {
   width: 100%;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+}
 
-  gap: 34px;
+.staging-row {
+  padding: 0 14px;
+}
+
+/* ==========================
+   Bulb Housings
+========================== */
+
+.bulb-housing {
+  position: relative;
+
+  width: 82px;
+  height: 66px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  padding-bottom: 4px;
+
+  background: linear-gradient(
+    180deg,
+    #090909 0%,
+    #171717 42%,
+    #292929 100%
+  );
+
+  border: 3px solid #444;
+  border-radius: 50% 50% 14px 14px;
+
+  box-shadow:
+    inset 0 5px 8px rgba(0, 0, 0, 0.9),
+    0 4px 7px rgba(0, 0, 0, 0.5);
+}
+
+/* Shade/visor over the lens */
+
+.bulb-housing::before {
+  content: "";
+
+  position: absolute;
+  top: -5px;
+  left: 50%;
+
+  width: 72px;
+  height: 30px;
+
+  background: #090909;
+  border: 3px solid #3c3c3c;
+  border-bottom: none;
+  border-radius: 42px 42px 0 0;
+
+  transform: translateX(-50%);
+}
+
+.small-housing {
+  width: 64px;
+  height: 46px;
+}
+
+.small-housing::before {
+  width: 55px;
+  height: 22px;
 }
 
 /* ==========================
@@ -75,75 +242,127 @@ button {
 ========================== */
 
 .bulb {
-  width: 56px;
-  height: 56px;
+  position: relative;
+  z-index: 2;
 
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
+
+  border: 4px solid #454545;
   border-radius: 50%;
 
-  border: 4px solid #555;
+  box-shadow:
+    inset 0 0 12px rgba(0, 0, 0, 0.9),
+    inset 3px 3px 4px rgba(255, 255, 255, 0.06);
 
-  background: #333;
-
-  transition: 0.15s ease;
+  transition:
+    background 0.08s ease,
+    box-shadow 0.08s ease;
 }
 
-/* Pre-stage / Stage bulbs */
-
 .bulb.small {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
+  border-width: 3px;
 }
 
 /* ==========================
-   OFF Colors
+   Bulbs Off
 ========================== */
 
 .bulb.white {
-  background: #555048;
+  background: #504d3c;
 }
 
 .bulb.amber {
-  background: #5c4300;
+  background: #513c05;
 }
 
 .bulb.green {
-  background: #0b4f22;
+  background: #073a19;
 }
 
 .bulb.red {
-  background: #5c1111;
+  background: #4c0d0d;
 }
 
 /* ==========================
-   ON Colors
+   Bulbs Lit
 ========================== */
 
 .bulb.lit.white {
-  background: #fff6b3;
+  background: #fff7ba;
+
   box-shadow:
-    0 0 8px #fff6b3,
-    0 0 18px #fff6b3;
+    inset 0 0 8px white,
+    0 0 10px #fff4a3,
+    0 0 24px rgba(255, 244, 163, 0.85);
 }
 
 .bulb.lit.amber {
-  background: #ffb300;
+  background: #ffb000;
+
   box-shadow:
-    0 0 8px #ffb300,
-    0 0 20px #ffb300;
+    inset 0 0 8px #fff0a8,
+    0 0 12px #ffb000,
+    0 0 28px rgba(255, 176, 0, 0.9);
 }
 
 .bulb.lit.green {
-  background: #20d45d;
+  background: #20dc63;
+
   box-shadow:
-    0 0 8px #20d45d,
-    0 0 20px #20d45d;
+    inset 0 0 8px #bcffd1,
+    0 0 12px #20dc63,
+    0 0 28px rgba(32, 220, 99, 0.9);
 }
 
 .bulb.lit.red {
-  background: #ff3030;
+  background: #ff2828;
+
   box-shadow:
-    0 0 8px #ff3030,
-    0 0 20px #ff3030;
+    inset 0 0 8px #ffc1c1,
+    0 0 12px #ff2828,
+    0 0 28px rgba(255, 40, 40, 0.9);
+}
+
+/* ==========================
+   Tree Stand
+========================== */
+
+.tree-base {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.base-post {
+  width: 24px;
+  height: 58px;
+
+  background: linear-gradient(
+    90deg,
+    #333,
+    #888,
+    #333
+  );
+
+  border-left: 2px solid #222;
+  border-right: 2px solid #222;
+}
+
+.base-foot {
+  width: 190px;
+  height: 18px;
+
+  background: linear-gradient(#686868, #292929);
+
+  border: 2px solid #777;
+  border-radius: 5px;
+
+  box-shadow: 0 9px 14px rgba(0, 0, 0, 0.6);
 }
 
 /* ==========================
@@ -151,18 +370,50 @@ button {
 ========================== */
 
 button {
+  min-width: 150px;
   padding: 12px 24px;
 
-  border: none;
-  border-radius: 8px;
+  border: 2px solid #777;
+  border-radius: 6px;
 
-  background: white;
-  color: black;
+  background: linear-gradient(#f3f3f3, #bdbdbd);
+  color: #111;
 
   cursor: pointer;
+
   font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.45);
 }
 
 button:hover {
-  background: #dddddd;
+  background: linear-gradient(#ffffff, #d3d3d3);
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width: 420px) {
+  .tree {
+    width: 285px;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .tree-header {
+    width: 285px;
+  }
+
+  .bulb-housing {
+    width: 74px;
+  }
 }
