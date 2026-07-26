@@ -1,91 +1,168 @@
+/* ==========================
+   Global
+========================== */
+
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
   background: #111;
   color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 button {
   font: inherit;
 }
 
+/* ==========================
+   App Layout
+========================== */
+
 .app {
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
   gap: 2rem;
 }
 
 .app h1 {
-  margin: 0;
+  font-size: 2.2rem;
+  font-weight: bold;
 }
+
+/* ==========================
+   Drag Tree
+========================== */
 
 .tree {
   width: 220px;
-  padding: 24px;
-  background: #1f1f1f;
-  border: 6px solid #444;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 30px;
+
+  background: #222;
+  border: 5px solid #555;
+  border-radius: 18px;
 }
 
-.light-row {
+/* Each pair of bulbs */
+
+.row {
+  width: 100%;
+
   display: flex;
   justify-content: center;
-  gap: 24px;
-  margin: 12px 0;
+  align-items: center;
+
+  gap: 34px;
 }
 
+/* ==========================
+   Bulbs
+========================== */
+
 .bulb {
-  width: 58px;
-  height: 58px;
+  width: 56px;
+  height: 56px;
+
   border-radius: 50%;
-  background: #2b2b2b;
+
   border: 4px solid #555;
-  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.8);
+
+  background: #333;
+
+  transition: 0.15s ease;
 }
+
+/* Pre-stage / Stage bulbs */
 
 .bulb.small {
   width: 34px;
   height: 34px;
 }
 
-.bulb.small.on {
-  background: #f5f5dc;
-  box-shadow:
-    0 0 12px #fff8c6,
-    0 0 28px #fff3a0;
+/* ==========================
+   OFF Colors
+========================== */
+
+.bulb.white {
+  background: #555048;
 }
 
 .bulb.amber {
-  background: #3a2c00;
+  background: #5c4300;
 }
 
 .bulb.green {
-  background: #003b18;
+  background: #0b4f22;
 }
 
 .bulb.red {
-  background: #3b0000;
+  background: #5c1111;
 }
 
+/* ==========================
+   ON Colors
+========================== */
+
+.bulb.lit.white {
+  background: #fff6b3;
+  box-shadow:
+    0 0 8px #fff6b3,
+    0 0 18px #fff6b3;
+}
+
+.bulb.lit.amber {
+  background: #ffb300;
+  box-shadow:
+    0 0 8px #ffb300,
+    0 0 20px #ffb300;
+}
+
+.bulb.lit.green {
+  background: #20d45d;
+  box-shadow:
+    0 0 8px #20d45d,
+    0 0 20px #20d45d;
+}
+
+.bulb.lit.red {
+  background: #ff3030;
+  box-shadow:
+    0 0 8px #ff3030,
+    0 0 20px #ff3030;
+}
+
+/* ==========================
+   Button
+========================== */
+
 button {
-  padding: 12px 22px;
+  padding: 12px 24px;
+
   border: none;
   border-radius: 8px;
-  background: #e5e5e5;
-  color: #111;
+
+  background: white;
+  color: black;
+
   cursor: pointer;
+  font-size: 1rem;
 }
 
 button:hover {
-  background: white;
+  background: #dddddd;
 }

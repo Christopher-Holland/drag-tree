@@ -1,16 +1,40 @@
-import Bulb from "./bulb";
+import Bulb from "./Bulb.tsx";
 
-function Tree() {
+type TreeProps = {
+  preStageLit: boolean;
+  stageLit: boolean;
+};
+
+function Tree({
+  preStageLit,
+  stageLit,
+}: TreeProps) {
   return (
     <div className="tree">
       <div className="row">
-        <Bulb color="white" size="small" />
-        <Bulb color="white" size="small" />
+        <Bulb
+          color="white"
+          size="small"
+          lit={preStageLit}
+        />
+        <Bulb
+          color="white"
+          size="small"
+          lit={preStageLit}
+        />
       </div>
 
       <div className="row">
-        <Bulb color="white" size="small" />
-        <Bulb color="white" size="small" />
+        <Bulb
+          color="white"
+          size="small"
+          lit={stageLit}
+        />
+        <Bulb
+          color="white"
+          size="small"
+          lit={stageLit}
+        />
       </div>
 
       <div className="row">
