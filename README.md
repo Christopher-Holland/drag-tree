@@ -7,7 +7,7 @@ Built with React, TypeScript, and Vite.
 ## Features
 
 - Visual Christmas Tree with pre-stage, stage, amber, green, and red bulbs
-- Three tree modes aligned with NHRA timing:
+- Three tree modes aligned with National Hot Rod Association (NHRA) timing:
   - **Pro Tree** — all three ambers flash together, green after **0.400s**
   - **Sportsman Tree** — ambers flash one at a time every **0.500s**, green after the last amber
   - **Instant Green** — no amber countdown; green after the starter delay
