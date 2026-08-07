@@ -72,30 +72,14 @@ function Tree({
             <div className="bulb-housing">
               <Bulb
                 color="amber"
-                lit={amberIndex === 1}
+                lit={amberIndex >= 1}
               />
             </div>
 
             <div className="bulb-housing">
               <Bulb
                 color="amber"
-                lit={amberIndex === 1}
-              />
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="bulb-housing">
-              <Bulb
-                color="amber"
-                lit={amberIndex === 2}
-              />
-            </div>
-
-            <div className="bulb-housing">
-              <Bulb
-                color="amber"
-                lit={amberIndex === 2}
+                lit={amberIndex >= 1}
               />
             </div>
           </div>
@@ -104,14 +88,30 @@ function Tree({
             <div className="bulb-housing">
               <Bulb
                 color="amber"
-                lit={amberIndex === 3}
+                lit={amberIndex >= 2}
               />
             </div>
 
             <div className="bulb-housing">
               <Bulb
                 color="amber"
-                lit={amberIndex === 3}
+                lit={amberIndex >= 2}
+              />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="bulb-housing">
+              <Bulb
+                color="amber"
+                lit={amberIndex >= 3}
+              />
+            </div>
+
+            <div className="bulb-housing">
+              <Bulb
+                color="amber"
+                lit={amberIndex >= 3}
               />
             </div>
           </div>
