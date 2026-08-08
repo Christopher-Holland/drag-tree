@@ -6,6 +6,12 @@ import {
   type TreeMode,
 } from "./config/treeModes";
 
+/*
+ * Simulated mechanical delay between releasing the
+ * transbrake and the car clearing the stage beam.
+ */
+const VEHICLE_RELEASE_DELAY_MS = 120;
+
 type RaceState =
   | "idle"
   | "pre-staged"
@@ -154,7 +160,9 @@ function App() {
   }
 
   function handleLaunch() {
-    const launchTime = performance.now();
+    const releaseTime = performance.now();
+    const vehicleLeaveTime =
+      releaseTime + VEHICLE_RELEASE_DELAY_MS;
 
     if (
       raceState === "staged" ||
@@ -170,11 +178,10 @@ function App() {
          * Round to the nearest thousandth so a
          * displayed 0.000 counts as a perfect light.
          */
-        const result =
-          Math.round(
-            launchTime -
-              scheduledGreenTimeRef.current,
-          );
+        const result = Math.round(
+          vehicleLeaveTime -
+            scheduledGreenTimeRef.current,
+        );
 
         setReactionTime(result);
 
@@ -198,7 +205,7 @@ function App() {
       greenTimeRef.current !== null
     ) {
       const result = Math.round(
-        launchTime - greenTimeRef.current,
+        vehicleLeaveTime - greenTimeRef.current,
       );
 
       setReactionTime(result);
